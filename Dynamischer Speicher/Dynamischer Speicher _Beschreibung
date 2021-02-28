@@ -1,0 +1,49 @@
+Dynamische Speicherverwaltung
+
+Wenn man Speicher am Anfang eines Quellcodes in einem riesigen Arrays reserviert, ist die festgelegte Größe statisch. Das bedeutet, dass während der Laufzeit eines Programms nur 
+höchstens soviele komponenten verwendet werden könne, wie zu Beginn reserviert wurden. Dieses vorgehen kann dazu führen, dass man nicht genug Speicherplatz reserviert hat oder 
+das zu viel Speicherplatz reserviert wurde. 
+
+Zur dynamischen Speicherreservierung wird die  Biblitothek stdlib.h benötigt, weiters braucht man den Datentyp size_t. 
+Dieser Datentyp ist vom Typ long int und wird für die Angabe 
+einer Datengröße in Byte verwendet. 
+
+
+Speicher reservieren mit malloc
+
+Mit Memory Allocation wird während der Laufzeit eines Programms Speicherplatz reserviert. Der Parameter size übergibt die Größe des Speicherbedarfs in Byte.
+Der Rückgabewert ist ein void-Zeiger auf den Anfang des Speicherbereichs oder ein NULL-Zeiger, wenn kein freier Speicher mehr zur Verfügung steht.
+Der void-Zeiger soll aussagen, dass der Datentyp des belegten Speicherbereichs unbekannt ist.
+
+
+void *malloc(size_t size);
+
+
+In diesem Beispielprogramm hat der Benutzer durch eine Tastatureingabe die Möglichkeit, die Array-Größe zu bestimmen. 
+Mit sizeof(int) erhalten wir die benötigte Größe zur Speicherung eines Integer-Wertes. Die Gesamtgröße ist abhängig von der Anzahl der Elemente, 
+also wird die Einzelgröße noch mit der gewünschten Anzahl multipliziert. Da malloc einen void-Zeiger liefert, wir in diesem Fall aber einen int-Zeiger haben, 
+casten wir die Rückgabe mit (int *). Das Casten ist nicht unbedingt notwendig, da der void-Zeiger automatisch in den richtigen Typ transformiert wird. 
+Es ist jedoch sauberer und erleichtert die Arbeit, wenn man den Code später in C++ Projekten verwenden möchte.
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+	int size=0;
+	int *array;
+
+	printf("Array-Groesse eingeben: ");
+	scanf("%d", &size);
+
+	// Speicher reservieren
+	array = (int *) malloc(size * sizeof(int));
+
+	if(array != NULL) {
+		printf("\nSpeicher ist reserviert\n");
+	}else {
+		printf("\nKein freier Speicher vorhanden.\n");
+	}
+
+	return 0;
+}
