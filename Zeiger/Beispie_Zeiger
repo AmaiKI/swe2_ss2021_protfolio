@@ -1,0 +1,6 @@
+int zahl = 15;
+int *zeiger;
+zeiger = &zahl;
+printf("Zeiger-Wert: %d\n", *zeiger);
+
+Zeiger-Wert: 15
