@@ -19,31 +19,27 @@ Der void-Zeiger soll aussagen, dass der Datentyp des belegten Speicherbereichs u
 void *malloc(size_t size);
 
 
-In diesem Beispielprogramm hat der Benutzer durch eine Tastatureingabe die Möglichkeit, die Array-Größe zu bestimmen. 
-Mit sizeof(int) erhalten wir die benötigte Größe zur Speicherung eines Integer-Wertes. Die Gesamtgröße ist abhängig von der Anzahl der Elemente, 
-also wird die Einzelgröße noch mit der gewünschten Anzahl multipliziert. Da malloc einen void-Zeiger liefert, wir in diesem Fall aber einen int-Zeiger haben, 
-casten wir die Rückgabe mit (int *). Das Casten ist nicht unbedingt notwendig, da der void-Zeiger automatisch in den richtigen Typ transformiert wird. 
-Es ist jedoch sauberer und erleichtert die Arbeit, wenn man den Code später in C++ Projekten verwenden möchte.
+Speicher reservieren mit calloc
+Cleared Memory Allocation (CALLOC) reserveriert ebenfalls Speicher, jedoch nicht in Bytes sondern in Elementen. 
+Der erste Parameter bestimmt die Anzahl der Elemente, der folgende die Größe des Elementes.
+Es gibt keinen großen Unterschied zu malloc, nur das calloc alle Speicherstellen mit 0 initialisiert, malloc lässt hier den Speicherinhalt unverändert, 
+die Rückgabewerte sind identisch.
+
+void *calloc(size_t n, size_t size);
 
 
-#include<stdio.h>
-#include<stdlib.h>
+Im vergleich zum malloc verändert sich nur diese Zeile
 
-int main() {
-	int size=0;
-	int *array;
+array = (int *) calloc(size, sizeof(int));
 
-	printf("Array-Groesse eingeben: ");
-	scanf("%d", &size);
+Speicher freigeben mit free
 
-	// Speicher reservieren
-	array = (int *) malloc(size * sizeof(int));
+Wenn Speicher reserviert wurde, muss er freigeben werden, sobald er nicht mehr benötigt wird. Wird regelmäßig Speicher reserviert, 
+ohne ihn wieder freizugeben, bringt man eventuell die Kapazitäten an die Grenze.
+Wenn der Speicher komplett belegt ist, werden die Daten auf die Festplatte gespeichert.
 
-	if(array != NULL) {
-		printf("\nSpeicher ist reserviert\n");
-	}else {
-		printf("\nKein freier Speicher vorhanden.\n");
-	}
+free kann nur Speicher freigeben, welcher mit malloc oder calloc reserviert wurde
+free kann nur Speicher freigeben, welcher vorher noch nicht freigegeben wurde
 
-	return 0;
-}
+
+
