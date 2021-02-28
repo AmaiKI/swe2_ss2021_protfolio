@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+	int size=100;
+	int *array;
+	
+	// Speicher reservieren
+	array = (int *) calloc(size, sizeof(int));
+
+	// Speicher freigeben
+	free(array);
+	
+	return 0;
+}
