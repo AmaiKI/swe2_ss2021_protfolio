@@ -1,1 +1,22 @@
+Strukturen
+
+Unter Strukturen versteht man das zusammenfassen von verschiedenen Datentypen.
+Variablen zum selben Thema werden zusammen gefasst. Zum Beispiel 
+Personendaten, Koordinaten eines Punktes, Beschreibungen von Gegenständen
+
+Ziel der Strukturen ist solche Daten zusammen zu fassen. Mit dem Schlüsselwort struct wird eine Struktur begonnen und der Name wird definiert.
+
+struct adresse {
+	char name[50];
+	char strasse[100];
+	short hausnummer;
+	long plz;
+	char stadt[50];
+};
+
+Damit man mit den Variablen in der Struktur arbeiten kann, kann ein Objekt bzw. eine Variable in der Struktur erzeugt werden.
+Hierfür schreibt wird  struct benutzt, danach den Namen der Struktur und anschließend den Namen der Variablen. 
+Der Zugriff auf die Elemente einer Struktur erfolgt über die Variable der Struktur, einem Punkt und anschließend der Variablen innerhalb der Struktur.
+
+
 
