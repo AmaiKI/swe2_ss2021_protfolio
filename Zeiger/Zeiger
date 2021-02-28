@@ -14,12 +14,5 @@ Beispiel
 **** Der Zeiger exisitiert jetzt zwar, deutet allerdings auf keinen sinnvollen Wert. 
 ***** Damit der Zeiger auf einen sinnvollen Wert, zeigt muss er mit einem Kaufmännischen Und (&) auf die Adresse der Variable gesetzt werden.
 
-int zahl = 15;
-int *zeiger;
-zeiger = &zahl;
-printf("Zeiger-Wert: %d\n", *zeiger);
-
-Zeiger-Wert: 15
-
 Ein Zeiger repräsentiert eine Adresse und nicht wie eine Variable einen Wert. 
 Will man auf den Wert der Adresse zugreifen, auf die ein Zeiger zeigt, muss der Stern * vor den Namen gesetzt werden.
