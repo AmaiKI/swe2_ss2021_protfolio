@@ -5,7 +5,7 @@ int main() {
 	int size=0;
 	int *array;
 
-	printf("Array-Groesse eingeben: ");
+	printf("Array-Groesse eingeben: "); // Eingabeaufforderung Array groesse
 	scanf("%d", &size);
 
 	// Speicher reservieren
